@@ -30,10 +30,3 @@ SymbolTableEntry* SymbolTable::lookup(const std::string& lexeme)
   }
   return NULL;
 }
-
-
-
-int main() {
-  SymbolTable* st = new SymbolTable();
-  SymbolTable::print(st);
-}
