@@ -14,12 +14,16 @@ DataType Type=dt_NONE;
 
 letter [a-zA-Z]
 digit [0-9]
+
 id {letter}({letter}|{digit})*
+
 digits {digit}{digit}*
 int_num {digits}
+
 optional_fraction (\.{int_num})?
 optional_exponent (E(\+|-)?{int_num})?
 real_num {int_num}{optional_fraction}{optional_exponent}
+
 open_comment \{
 close_comment \}
 comment_body [^{}]*
@@ -60,6 +64,7 @@ comment {open_comment}{comment_body}{close_comment}
 
 {int_num}  {Oper = op_NONE; Type = dt_INTEGER; return(tc_NUMBER);}
 {real_num} {Oper = op_NONE; Type = dt_REAL;    return(tc_NUMBER);}
+
 {id} {Oper = op_NONE; Type = dt_ID; 
       if(TOOLONG(yytext)) return(tc_ERROR2); return(tc_ID);}
 .* {Oper = op_NONE;  Type = dt_NONE;  return(tc_ERROR);}
