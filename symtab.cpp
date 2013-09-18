@@ -1,15 +1,12 @@
 #include "symtab.h"
 
-bool compareSTE(SymbolTableEntry* a,SymbolTableEntry* b) {
-    return(a->lexeme < b->lexeme);
-}
-
 SymbolTable::SymbolTable(void)
 {
+
 }
 
 SymbolTable::~SymbolTable(void)
-{ 
+{
   EntryList::iterator it = m_table.begin();
   for(; it != m_table.end(); ++it) {
     delete *it;
