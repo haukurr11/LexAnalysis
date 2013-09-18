@@ -33,10 +33,10 @@ public:
  // Connect the scanner to a symbol table and standard io or files
  Scanner(SymbolTable* symbols, std::istream& input, std::ostream& output);
  // Remember to call delete for m_lexer here
- ~Scanner();                 
+ ~Scanner();
  // Getter for the symboltable
  SymbolTable* getSymbolTable(void);
- 
+
  // Create the next token from the input character stream and add it to the symboltable if 
  // it is an identifier or a number
  Token* nextToken(void);     // returns the next token from FlexLexer 

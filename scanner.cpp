@@ -22,7 +22,7 @@ void Scanner::setCurrentToken(TokenCode tc, DataType dt, const std::string& lexe
 {
   m_currentToken.setTokenCode(tc);
   m_currentToken.setDataType(dt);
-  m_symbolTable->insert(lexeme);
+  m_currentToken.setSymTabEntry(m_symbolTable->insert(lexeme));
 }
 
 SymbolTable* Scanner::getSymbolTable(void)
@@ -32,4 +32,6 @@ SymbolTable* Scanner::getSymbolTable(void)
 
 Token* Scanner::nextToken(void)
 {
+  TokenCode tCode = static_cast<TokenCode>(m_lexer->yylex());
+
 }
