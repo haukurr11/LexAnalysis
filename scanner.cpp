@@ -4,6 +4,7 @@
 Scanner::Scanner(SymbolTable* symbols, std::istream& input, std::ostream& output)
 {
  m_symbolTable = symbols;
+ m_lexer = new yyFlexLexer(&input,&output);
 }
 
 Scanner::~Scanner()
@@ -33,5 +34,8 @@ SymbolTable* Scanner::getSymbolTable(void)
 Token* Scanner::nextToken(void)
 {
   TokenCode tCode = static_cast<TokenCode>(m_lexer->yylex());
-
+  setCurrentToken(tCode,Type,Oper);
+  if(tCode == tc_ID || tCode == tc_NUMBER) {
+    m_currentToken.setSymTabEntry(m_symbolTable->insert(m_lexer->YYText()));
+  }
 }
