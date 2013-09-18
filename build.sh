@@ -1,5 +1,2 @@
 flex regexp.l
-g++ lex.yy.cc -o flexer
-./flexer
-
-
+g++ *.cpp -o flexer

@@ -70,8 +70,3 @@ comment {open_comment}{comment_body}{close_comment}
 .* {Oper = op_NONE;  Type = dt_NONE;  return(tc_ERROR);}
 %%
 
-int main(void) {
-  FlexLexer* lexer = new yyFlexLexer();
-  lexer->yylex();
-  return 0;
-}
