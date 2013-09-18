@@ -88,5 +88,10 @@ Returns the TokenCode as a string object.
 */
 std::string Token::tokenCodeToString(void)
 {
-  return tokenCodeStrings[m_tokenCode];
+  std::string tk = tokenCodeStrings[m_tokenCode];
+  if(m_tokenCode == tc_NUMBER || m_tokenCode == tc_ID) {
+    std::string val = "(" + m_symtabEntry->lexeme + ")";
+    tk += val;
+  }
+  return tk;
 }

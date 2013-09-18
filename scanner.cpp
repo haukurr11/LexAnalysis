@@ -35,7 +35,10 @@ Token* Scanner::nextToken(void)
 {
   TokenCode tCode = static_cast<TokenCode>(m_lexer->yylex());
   setCurrentToken(tCode,Type,Oper);
+  std::string lex = m_lexer->YYText();
+  std::cout << "lex:" << lex << "\n";
   if(tCode == tc_ID || tCode == tc_NUMBER) {
-    m_currentToken.setSymTabEntry(m_symbolTable->insert(m_lexer->YYText()));
+    m_currentToken.setSymTabEntry(m_symbolTable->insert(lex));
   }
+  return &m_currentToken;
 }
