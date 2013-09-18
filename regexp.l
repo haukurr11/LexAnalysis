@@ -60,6 +60,9 @@ comment {open_comment}{comment_body}{close_comment}
 "["     {Oper = op_NONE; Type = dt_NONE; return(tc_LBRACKET);}
 ")"     {Oper = op_NONE; Type = dt_NONE; return(tc_RPAREN);}
 "]"     {Oper = op_NONE; Type = dt_NONE; return(tc_RBRACKET);}
+"then"  {Oper = op_NONE; Type = dt_NONE; return(tc_THEN);}
+"else"  {Oper = op_NONE; Type = dt_NONE; return(tc_ELSE);}
+"if"	{Oper = op_NONE; Type = dt_NONE; return(tc_IF);}
 <<EOF>> {Oper = op_NONE; Type = dt_NONE; return(tc_EOF);}
 
 {int_num}  {Oper = op_NONE; Type = dt_INTEGER; return(tc_NUMBER);}
