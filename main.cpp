@@ -7,7 +7,6 @@ int main() {
   Token* t;
   do {
     t = sc->nextToken();
-    std::cout << TokenCodeToString(t);
   }while(t->getTokenCode() != tc_EOF );
   st->print(st);
   return 0;
