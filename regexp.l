@@ -29,45 +29,28 @@ close_comment \}
 comment_body [^{}]*
 comment {open_comment}{comment_body}{close_comment}
 
-program (?i:program)
-var (?i:var)
-array (?i:array)
-of (?i:of)
-integer (?i:integer)
-real (?i:real)
-function (?i:function)
-procedure (?i:procedure)
-begin (?i:begin)
-end (?i:end)
-if (?i:if)
-then (?i:then)
-else (?i:else)
-while (?i:while)
-do (?i:do)
-not (?i:not)
-
 %%
 [ ]       {Oper = op_NONE; Type = dt_NONE; return(tc_SPACE);}
 \t        {Oper = op_NONE; Type = dt_NONE; return(tc_TAB);}
 \n        {Oper = op_NONE; Type = dt_NONE; return(tc_NEWLINE);}
 {comment} {Oper = op_NONE; Type = dt_NONE; return(tc_COMMENT);}
 
-{program}     {Oper = op_NONE; Type = dt_KEYWORD; return(tc_PROGRAM);}
-{var}         {Oper = op_NONE; Type = dt_KEYWORD; return(tc_VAR);}
-{array}       {Oper = op_NONE; Type = dt_KEYWORD; return(tc_ARRAY);}
-{of}          {Oper = op_NONE; Type = dt_KEYWORD; return(tc_OF);}
-{integer}     {Oper = op_NONE; Type = dt_KEYWORD; return(tc_INTEGER);}
-{real}        {Oper = op_NONE; Type = dt_KEYWORD; return(tc_REAL);}
-{function}    {Oper = op_NONE; Type = dt_KEYWORD; return(tc_FUNCTION);}
-{procedure}   {Oper = op_NONE; Type = dt_KEYWORD; return(tc_PROCEDURE);}
-{begin}       {Oper = op_NONE; Type = dt_KEYWORD; return(tc_BEGIN);}
-{end}         {Oper = op_NONE; Type = dt_KEYWORD; return(tc_END);}
-{if}          {Oper = op_NONE; Type = dt_KEYWORD; return(tc_IF);}
-{then}        {Oper = op_NONE; Type = dt_KEYWORD; return(tc_THEN);}
-{else}        {Oper = op_NONE; Type = dt_KEYWORD; return(tc_ELSE);}
-{while}       {Oper = op_NONE; Type = dt_KEYWORD; return(tc_WHILE);}
-{do}          {Oper = op_NONE; Type = dt_KEYWORD; return(tc_DO);}
-{not}         {Oper = op_NONE; Type = dt_KEYWORD; return(tc_NOT);}
+(?i:program)    {Oper = op_NONE; Type = dt_KEYWORD; return(tc_PROGRAM);}
+(?i:var)        {Oper = op_NONE; Type = dt_KEYWORD; return(tc_VAR);}
+(?i:array)      {Oper = op_NONE; Type = dt_KEYWORD; return(tc_ARRAY);}
+(?i:of)         {Oper = op_NONE; Type = dt_KEYWORD; return(tc_OF);}
+(?i:integer)    {Oper = op_NONE; Type = dt_KEYWORD; return(tc_INTEGER);}
+(?i:real)       {Oper = op_NONE; Type = dt_KEYWORD; return(tc_REAL);}
+(?i:function)   {Oper = op_NONE; Type = dt_KEYWORD; return(tc_FUNCTION);}
+(?i:procedure)  {Oper = op_NONE; Type = dt_KEYWORD; return(tc_PROCEDURE);}
+(?i:begin)      {Oper = op_NONE; Type = dt_KEYWORD; return(tc_BEGIN);}
+(?i:end)        {Oper = op_NONE; Type = dt_KEYWORD; return(tc_END);}
+(?i:if)         {Oper = op_NONE; Type = dt_KEYWORD; return(tc_IF);}
+(?i:then)       {Oper = op_NONE; Type = dt_KEYWORD; return(tc_THEN);}
+(?i:else)       {Oper = op_NONE; Type = dt_KEYWORD; return(tc_ELSE);}
+(?i:while)      {Oper = op_NONE; Type = dt_KEYWORD; return(tc_WHILE);}
+(?i:do)         {Oper = op_NONE; Type = dt_KEYWORD; return(tc_DO);}
+(?i:not)        {Oper = op_NONE; Type = dt_KEYWORD; return(tc_NOT);}
 
 "="     {Oper = op_EQ; Type = dt_OP; return(tc_RELOP);}
 "<>"    {Oper = op_NE; Type = dt_OP; return(tc_RELOP);}
