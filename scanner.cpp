@@ -36,8 +36,13 @@ SymbolTable* Scanner::getSymbolTable(void)
 
 Token* Scanner::nextToken(void)
 {
-  TokenCode tCode = static_cast<TokenCode>(m_lexer->yylex());
-  std::string lex = m_lexer->YYText();
+  TokenCode tCode;
+  std::string lex;
+  do {
+  tCode = static_cast<TokenCode>(m_lexer->yylex());
+  } while(tCode == tc_SPACE || tCode == tc_COMMENT ||
+         tCode == tc_NEWLINE || tCode == tc_TAB);
+  lex = m_lexer->YYText();
   std::transform( lex.begin(), lex.end(), lex.begin(),::tolower );
   if(tCode == tc_ID || tCode == tc_NUMBER) {
     setCurrentToken(tCode,Type,lex);
