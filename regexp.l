@@ -37,7 +37,7 @@ begin (?i:begin)
 end (?i:end)
 
 %%
-[ \t|\n]+   {}
+[ \t\n]+   {}
 {comment} {}
 
 {program} {Oper = op_NONE; Type = dt_KEYWORD;  return(tc_PROGRAM);}

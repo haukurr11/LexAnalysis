@@ -90,15 +90,10 @@ std::string Token::tokenCodeToString(void)
 {
   std::string tk = TokenCodeToString(m_tokenCode);
   if(m_tokenCode == tc_NUMBER || m_tokenCode == tc_ID) {
-    std::string val = "(" + m_symtabEntry->lexeme + ")";
-    tk += val;
+    tk += ("(" + m_symtabEntry->lexeme + ")");
   }
-  else if(m_dataType == dt_OP) {
-    std::string opt_str = OpTypeToString(m_opType);
-    if(opt_str != "NONE") {
-      std::string type = "(" + opt_str + ")";
-      tk += type;
-    }
+  else if(m_opType != op_NONE && m_dataType == dt_OP) {
+    tk += ("(" + OpTypeToString(m_opType) + ")");
   }
   return tk;
 }
