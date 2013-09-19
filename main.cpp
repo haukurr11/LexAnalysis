@@ -9,6 +9,7 @@ int main() {
     t = sc->nextToken();
     std::cout << t->tokenCodeToString() << " ";
   }while(t->getTokenCode() != tc_EOF );
+  std::cout << "\n\n";
   st->print(st);
   return 0;
 }

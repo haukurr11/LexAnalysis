@@ -81,17 +81,24 @@ Returns the OpType as a string object.
 */
 std::string Token::opTypeToString(void)
 {
-  return opStrings[m_opType];
+  return CodeOpToString(m_opType);
 }
 /*
 Returns the TokenCode as a string object.
 */
 std::string Token::tokenCodeToString(void)
 {
-  std::string tk = tokenCodeStrings[m_tokenCode];
+  std::string tk = TokenCodeToString(m_tokenCode);
   if(m_tokenCode == tc_NUMBER || m_tokenCode == tc_ID) {
     std::string val = "(" + m_symtabEntry->lexeme + ")";
     tk += val;
+  }
+  else if(m_dataType == dt_OP) {
+    std::string opt_str = OpTypeToString(m_opType);
+    if(opt_str != "NONE") {
+      std::string type = "(" + opt_str + ")";
+      tk += type;
+    }
   }
   return tk;
 }

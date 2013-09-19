@@ -29,10 +29,23 @@ close_comment \}
 comment_body [^{}]*
 comment {open_comment}{comment_body}{close_comment}
 
+program (?i:program)
+var (?i:var)
+real (?i:real)
+integer (?i:integer)
+begin (?i:begin)
+end (?i:end)
+
 %%
-[ \t]+   {}
+[ \t|\n]+   {}
 {comment} {}
-"program"  {Oper = op_NONE; Type = dt_KEYWORD;  return(tc_PROGRAM);}
+
+{program} {Oper = op_NONE; Type = dt_KEYWORD;  return(tc_PROGRAM);}
+{var}     {Oper = op_NONE; Type = dt_KEYWORD;  return(tc_VAR);}
+{real}    {Oper = op_NONE; Type = dt_KEYWORD;  return(tc_REAL);}
+{integer} {Oper = op_NONE; Type = dt_KEYWORD;  return(tc_INTEGER);}
+{begin}   {Oper = op_NONE; Type = dt_KEYWORD;  return(tc_BEGIN);}
+{end}     {Oper = op_NONE; Type = dt_KEYWORD;  return(tc_END);}
 
 "="     {Oper = op_EQ; Type = dt_OP; return(tc_RELOP);}
 "<>"    {Oper = op_NE; Type = dt_OP; return(tc_RELOP);}
@@ -70,6 +83,6 @@ comment {open_comment}{comment_body}{close_comment}
 
 {id} {Oper = op_NONE; Type = dt_ID; 
       if(TOOLONG(yytext)) return(tc_ERROR2); return(tc_ID);}
-.* {Oper = op_NONE;  Type = dt_NONE;  return(tc_ERROR);}
+. {Oper = op_NONE;  Type = dt_NONE;  return(tc_ERROR);}
 %%
 
